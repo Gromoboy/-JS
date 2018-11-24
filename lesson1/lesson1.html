@@ -12,19 +12,26 @@
 <body>
 <div id="menu-block"></div>
 <button id="removeMenu" >Убрать меню</button>
-<script src="lesson1.js"></script>
+<!--<script src="lesson1.js"></script>-->
 <script src="MenuItem.js"></script>
 <script src="Menu.js"></script>
 <script>
     window.onload = () => {
         let menuBlock = document.getElementById('menu-block');
 
+        let submenu = new SubMenu('subMy', 'subMy', [
+          new MenuItem('#','Sub 1'),
+          new MenuItem('#', 'Sub 2')
+        ]);
+
         let menu = new Menu('my', 'my', [
             new MenuItem('/', 'Home'),
             new MenuItem('/about', 'About'),
+            submenu,
             new MenuItem('/blog', 'blog'),
             new MenuItem('/services', 'Services'),
             // new SubMenu()
+            submenu
         ]);
 
         menuBlock.innerHTML = menu.render();
