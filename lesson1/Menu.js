@@ -17,5 +17,10 @@ class Menu {
     }
     remove(){
         //TODO: удаление меню
+      let menuEl = document.getElementById(this.id);
+      if (menuEl) {
+        menuEl.parentElement.removeChild(menuEl);
+      }
+
     }
 }
