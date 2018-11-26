@@ -13,6 +13,8 @@ class Menu {
             //TODO: instanceof SubMenu
             if (this.items[i] instanceof SubMenu){
               result = result.slice(0,-5) + this.items[i].render() + result.slice(-5);
+
+              // result += this.items[i].render();
             }
         }
         result += `</ul>`;
@@ -28,4 +30,8 @@ class Menu {
     }
 }
 
-class SubMenu extends Menu {}
+class SubMenu extends Menu {
+  // render() {
+  //   return `<ul>${super.render()}`;
+  // }
+}

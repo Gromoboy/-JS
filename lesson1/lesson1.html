@@ -19,18 +19,26 @@
     window.onload = () => {
         let menuBlock = document.getElementById('menu-block');
 
+
+        let subSubMenu = new SubMenu('subSubMy', 'subSubMy', [
+          new MenuItem('#', 'sub subItem1'),
+          new MenuItem('#', 'sub subItem2')
+        ]);
+
         let submenu = new SubMenu('subMy', 'subMy', [
           new MenuItem('#','Sub 1'),
-          new MenuItem('#', 'Sub 2')
+          new MenuItem('#', 'Sub 2'),
+          subSubMenu
         ]);
 
         let menu = new Menu('my', 'my', [
             new MenuItem('/', 'Home'),
             new MenuItem('/about', 'About'),
-            submenu,
+            // submenu,
             new MenuItem('/blog', 'blog'),
             new MenuItem('/services', 'Services'),
             // new SubMenu()
+            // submenu,
             submenu
         ]);
 
