@@ -10,6 +10,11 @@
   <script src="burger.js"></script>
   <script>
     let burger = new Hamburger('small',['cheese','salad']);
+    burger.addTopping('mayo');
+    // 50 + 10 + 20 + 20 = 100 рублей
+    console.log(burger.calcPrice());
+    // 20 + 20 + 5 + 5 = 50 калорий
+    console.log(burger.calcCalories());
     
   </script>
 </body>
