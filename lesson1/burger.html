@@ -9,6 +9,7 @@
 <body>
 <form action="#" id="hamburger-form">
   <fieldset>
+    <legend>Выберите ингридиенты для заказа своего идеального Гамбургера</legend>
     <fieldset>
       <legend>Выберите размер гамбургера</legend>
       <input id="bigburger" type="radio" name="size" value="large" data-price="100" data-cal="40" checked>
@@ -32,12 +33,14 @@
       <input type="checkbox" name="topping" id="mayo" value="mayo" data-price="20" data-cal="5">
       <label for="mayo">Полить майонезом (20 рублей, 5 калорий)</label>
     </fieldset>
-    <div id="check">Собрать бургер</div>
+    <br>
+    <button id="check-btn" type="button">Собрать бургер</button>
     <p id="resul-burger">Итоговая стоимость: <span id="burger-price">0</span><br>
       Количество калорий: <span id="burger-calories">0</span></p>
   </fieldset>
 </form>
   <script src="burger.js"></script>
+  <script src="webBurger.js"></script>
   <script>
     let burger = new Hamburger('small',['cheese','salad']);
     burger.addTopping('mayo');
@@ -45,7 +48,14 @@
     console.log(burger.calcPrice());
     // 20 + 20 + 5 + 5 = 50 калорий
     console.log(burger.calcCalories());
-    
+
+    window.onload = () => {
+      document.getElementById('check-btn').addEventListener('click', () => {
+        let burger = new WebBurger('size', 'stuffing', 'topping');
+        burger.showTotal('burger-price', 'burger-calories');
+      })
+    }
+
   </script>
 </body>
 </html>

@@ -35,8 +35,8 @@ class Hamburger {
     }
 
     this.TOPPINGS = {
-      mayo: {price:20, cal:5},
-      spice: {price:15, cal:0}
+      mayo: {price: 20, cal: 5},
+      spice: {price: 15, cal: 0}
     }
 
   }
@@ -45,6 +45,7 @@ class Hamburger {
 
     return this.SIZES[this._size].price + this.getStuffingsPrice() + this.getToppingsPrice();
   }
+
   getStuffingsPrice() {
 
     let price = this._stuffing.map((stuff) => {
@@ -79,7 +80,7 @@ class Hamburger {
   getToppingsCalories() {
     if (this._toppings.length === 0) return 0;
 
-    let calories = this._toppings.map( (topping) => this.TOPPINGS[topping].cal ).reduce((acc, curr) => acc + curr);
+    let calories = this._toppings.map((topping) => this.TOPPINGS[topping].cal).reduce((acc, curr) => acc + curr);
 
     return Number.isNaN(calories) ? 0 : calories;
   }
@@ -90,6 +91,6 @@ class Hamburger {
   }
 
   removeTopping(topping) {
-    if ( this._toppings.includes(topping) ) this._toppings.pop(topping);
+    if (this._toppings.includes(topping)) this._toppings.pop(topping);
   }
 }
