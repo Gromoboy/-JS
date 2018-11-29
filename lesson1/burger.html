@@ -7,6 +7,36 @@
   <title>Бургер</title>
 </head>
 <body>
+<form action="#" id="hamburger-form">
+  <fieldset>
+    <fieldset>
+      <legend>Выберите размер гамбургера</legend>
+      <input id="bigburger" type="radio" name="size" value="large" data-price="100" data-cal="40" checked>
+      <label for="bigburger">Большой (100 рублей, 40 калорий)</label><br>
+      <input id="smallburger" type="radio" name="size" value="small" data-price="15" data-cal="20">
+      <label for="smallburger">Малый (15 рублей, 20 калорий)</label>
+    </fieldset>
+    <fieldset>
+      <legend>Выберите начинку бургера</legend>
+      <input type="radio" name="stuffing" id="cheese" value="cheese" data-price="10" data-cal="20" checked>
+      <label for="cheese">Сыр (10 рублей, 20 калорий)</label><br>
+      <input type="radio" name="stuffing" id="salad" value="salad" data-price="20" data-cal="5">
+      <label for="salad">Салат (20 рублей, 5 калорий</label><br>
+      <input type="radio" name="stuffing" id="potato" value="potato" data-price="15" data-cal="10">
+      <label for="potato">Картофель (15 рублей, 10 калорий)</label>
+    </fieldset>
+    <fieldset>
+      <legend>Выберете доп. опцию</legend>
+      <input type="checkbox" name="topping" id="spice" value="spice" data-price="15" data-cal="0" checked>
+      <label for="spice">Посыпать приправой (15 рублей, 0 калорий)</label><br>
+      <input type="checkbox" name="topping" id="mayo" value="mayo" data-price="20" data-cal="5">
+      <label for="mayo">Полить майонезом (20 рублей, 5 калорий)</label>
+    </fieldset>
+    <div id="check">Собрать бургер</div>
+    <p id="resul-burger">Итоговая стоимость: <span id="burger-price">0</span><br>
+      Количество калорий: <span id="burger-calories">0</span></p>
+  </fieldset>
+</form>
   <script src="burger.js"></script>
   <script>
     let burger = new Hamburger('small',['cheese','salad']);
