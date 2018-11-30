@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ajax запросы</title>
+</head>
+<body>
+  <button class="success" type="button">Получить успех</button>
+  <button class="error" type="button">Получить ошибку</button>
+  <div class="response"></div>
+  <script>
+    window.onload = () => {
+      let response = document.querySelector('.response');
+
+      document.querySelector('.success').addEventListener('click', () => {
+        fetch('success.json').then(text =>  text.json()).
+                              then( obj => response.innerHTML = `${obj.result.toUpperCase().bold()} !!!`);
+      });
+
+      document.querySelector('.error').addEventListener('click', () => {
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', 'error.json', true);
+        xhr.onreadystatechange = () => {
+          if (xhr.status === 200) {
+            let obj = JSON.parse(xhr.responseText);
+            response.innerHTML = `You got ${obj.result}`;
+          }
+        };
+        xhr.send();
+      })
+    }
+  </script>
+</body>
+</html>
