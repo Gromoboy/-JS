@@ -1,47 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styleMenu.css">
+  <title>Title</title>
   <style>
-    button{
+    button {
       padding: .5em;
     }
   </style>
 </head>
+
 <body>
-<div id="menu-block"></div>
-<button id="removeMenu" >Убрать меню</button>
-<!--<script src="lesson1.js"></script>-->
-<script src="MenuItem.js"></script>
-<script src="Menu.js"></script>
-<script>
+  <div id="menu-block"></div>
+  <button id="removeMenu">Убрать меню</button>
+  <!--<script src="lesson1.js"></script>-->
+  <script src="MenuItem.js"></script>
+  <script src="Menu.js"></script>
+  <script>
     window.onload = () => {
-        let menuBlock = document.getElementById('menu-block');
+      let menuBlock = document.getElementById('menu-block');
 
 
 
 
 
-      let menu = new Menu('my', 'my', [
-            new MenuItem('/', 'Home'),
-            new MenuItem('/about', 'About'),
-            new MenuItem('/blog', 'blog'),
-            new MenuItem('/services', 'Services'),
-            new SubMenu('#','mi for sub','subMy', 'subMy', [
-              new MenuItem('#','Sub 1'),
-              new MenuItem('#', 'Sub 2'),
-              new SubMenu('#','mi for sub','subMy', 'subMy', [
-                new MenuItem('#','Sub 1'),
-                new MenuItem('#', 'Sub 2'),
-              ]),
-            ]),
-        ]);
+      let menu = new Menu('main', 'menu', [
+        new MenuItem('/', 'Home'),
+        new MenuItem('/about', 'About'),
+        new MenuItem('/blog', 'blog'),
+        new MenuItem('/services', 'Services'),
+        new SubMenu('#', 'mi for sub', 'subMy', 'hidden', [
+          new MenuItem('#', 'Sub 1'),
+          new MenuItem('#', 'Sub 2'),
+          new SubMenu('#', 'mi for sub', 'subSubMy', 'hidden', [
+            new MenuItem('#', 'subSub 1'),
+            new MenuItem('#', 'subSub 2'),
+          ]),
+        ]),
+      ]);
 
-        menuBlock.innerHTML = menu.render();
-        document.querySelector('#removeMenu').addEventListener('click',()=>menu.remove());
+      menuBlock.innerHTML = menu.render();
+      document.querySelector('#removeMenu').addEventListener('click', () => menu.remove());
 
     }
-</script>
+  </script>
 </body>
+
 </html>

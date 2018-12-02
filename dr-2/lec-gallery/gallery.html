@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <title>Галерея</title>
+</head>
+<body>
+  <div class="gallery-wrap">
+  </div>
+  <!-- <div id="${this.settings.id}" class="modal-wrap">
+    <div class="top-block">
+      <button type="button" class="${this.settings.btn}" aria-label="Close"></button>
+    </div>
+    <div class="${this.settings.imgWrap}">
+    </div>
+  </div> -->
+
+  <script src="Gallery.js"></script>
+  <script>
+    window.onload = () => {
+      let myGallery = new Gallery('galleryImgs.json','.gallery-wrap' );
+      }
+  </script>
+</body>
+</html>

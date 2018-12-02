@@ -1,0 +1,6 @@
+[
+  {"src": "../gallery/img/min/1.jpg", "alt": "мир js", "srcMax": "../gallery/img/max/1.jpg"},
+  {"src": "../gallery/img/min/2.jpg", "alt": "mac js", "srcMax": "../gallery/img/max/2.jpg"},
+  {"src": "../gallery/img/min/3.jpg", "alt": "learn js", "srcMax": "../gallery/img/max/3.jpg"},
+  {"src": "../gallery/img/min/4.jpg", "alt": "объявление", "srcMax": "../gallery/img/max/4.jpg"}
+]
