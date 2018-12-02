@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link href="regStyle.css" rel="stylesheet" />
+    <title>RegEx hw-3-1</title>
+</head>
+<body>
+    <div class="wrap">
+
+        <div class="display source"></div>
+        <div class="display result"></div>
+    </div>
+    <div class="buttons-flex">
+
+        <button class="btn zd-1" type="button">Задание 1</button>
+        <button class="btn zd-2" type="button">Задание 2</button>
+    </div>
+    <script>
+        // 1. Дан большой текст, в котором для обозначения диалогов используются одинарные кавычки.
+        // Придумать шаблон, который меняет одинарные кавычки на двойные.
+        window.onload = () => {
+            let sourceEl = document.querySelector('.source'),
+                resultEl = document.querySelector('.result'),
+                btnZd1 = document.querySelector('.zd-1'),
+                btnZd2 = document.querySelector('.zd-2');
+
+            fetch('./texttoreplace.txt')
+                .then(resp => resp.text())
+                .then(text => sourceEl.innerText = text);
+            btnZd1.addEventListener('click', () => {
+                resultEl.innerText = sourceEl.innerText.replace(/'/g, '"');
+            })
+        }
+    </script>
+</body>
+</html>
