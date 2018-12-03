@@ -1,9 +1,10 @@
 .wrap {
+    margin:0 auto;
     width: 1000px;
     display:flex;
     flex-direction:row;
     justify-content: center;
-    align-items: center;
+ 
 }
 
 .display {
@@ -21,4 +22,38 @@
 .btn {
     padding: 5px;
     margin: 20px;
+    border-radius: 12px;
+    border: 2px solid #008CBA;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    transition-duration: 0.4s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+    .btn:hover {
+        background: #008CBA;
+        color: white;
+    }
+
+    .btn:active {
+        box-shadow:none;
+    }
+
+
+
+@media (max-width: 780px) {
+    .wrap {
+        flex-direction: column;
+        margin:0;
+    }
+    body {
+        display: flex;
+        flex-direction: column-reverse;
+        
+    }
+    .display {
+        margin-bottom: 20px;
+    }
 }
