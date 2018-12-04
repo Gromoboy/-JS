@@ -14,7 +14,7 @@
 
 class ValidatorTemplates {
   constructor() {
-    this.userName = /\w+/;
+    this.userName = /^([a-z]+)|([йцукенгшщзхъфывапролджэячсмитьбю]+)$/i;
     this.phone = /^\+\d\(\d{3}\)\d{3}\-\d{4}$/;
     this.email = /^\w+@\w+\.(ru)|(com)$/;
   }
@@ -55,7 +55,7 @@ class FormValidator {
   setInvalidField(inputEl) {
     inputEl.classList.remove('valid');
     inputEl.classList.add('invalid');
-    alert('Неправильный ввод в поле: ' + inputEl.placeholder);
+    //alert('Неправильный ввод в поле: ' + inputEl.placeholder);
 
   }
 }
