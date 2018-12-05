@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="validation.css">
+  <title>Валидация формы ур 3 зд 3</title>
+</head>
+<body>
+  <div class="wrapper">
+    <form class="my-form" action="#">
+      <label for="userName">
+        Имя <br>
+        <input type="text" id="userName" class="userName" placeholder="Иван">
+      </label>
+      <br>
+      <label for="phone">
+        Телефон <br>
+        <input type="text" id="phone" class="phone" placeholder="+7 (000)000-0000">
+      </label>
+      <br>
+      <label for="email">
+        Эл. почта <br>
+        <input type="text" id="email" class="email" placeholder="your@mail.ru">
+      </label>
+      <br>
+      <textarea name="post" id="post" cols="30" rows="10"></textarea><br>
+      <button type="submit">Отправить</button>
+    </form>
+    <script src="validation.js"></script>
+    <script>
+      window.onload = () => {
+        new FormValidator('.my-form');
+      }
+    </script>
+  </div>
+</body>
+</html>
