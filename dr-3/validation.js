@@ -20,11 +20,21 @@ class ValidatorTemplates {
   }
 }
 
+class ErrorMessages {
+  constructor() {
+    this.userName = 'Имя должно содержать только буквы';
+    this.phone    = 'Телефон должен подчинятся шаблону +7 (000)000-0000 !';
+    this.email    = 'E-mail должен выглядеть как mymail@mail.ru, или my.mail@mail.ru, или my-mail@mail.ru';
+
+  }
+}
+
 class FormValidator {
-  constructor (formSelector) {
+  constructor (formSelector, templates = new ValidatorTemplates(), errors = new ErrorMessages()) {
     if (!(this.formEl = document.querySelector(formSelector))) console.log("can't get form", this.formEl);
     this.formEl.addEventListener('submit', evt => this.formSubmit(evt))
-    this.templates = new ValidatorTemplates();
+    this.templates = templates;
+    this.errorMsgs = errors;
   }
 
   formSubmit(evt) {
@@ -34,17 +44,28 @@ class FormValidator {
   }
 
   validate(){
-    for (const className in this.templates) {
-      const el = document.querySelector('.' + className);
+    for (const errorClass in this.templates) {
+      const el = document.querySelector('.' + errorClass);
 
-      let isInputCorrect = this.templates[className].test(el.value);
+      let isInputCorrect = this.templates[errorClass].test(el.value);
 
       if (isInputCorrect) {
         this.setValidField(el);
+
       } else {
       this.setInvalidField(el);
+      this.addErrorMessage(el, errorClass);
       }
     }
+  }
+
+  addErrorMessage(el, className) {
+    if (el.parentElement.getElementsByClassName('error-hint').length ) return;
+
+    let errorEl = document.createElement('div');
+    errorEl.classList.add('error-hint')
+    errorEl.innerHTML = this.errorMsgs[className];
+    el.parentElement.appendChild(errorEl);
   }
 
   setValidField(inputEl) {

@@ -10,9 +10,21 @@
 <body>
   <div class="wrapper">
     <form class="my-form" action="#">
-      <input type="text" class="userName" placeholder="Имя"><br>
-      <input type="text" class="phone" placeholder="Телефон"><br>
-      <input type="text" class="email" placeholder="Эл. почта"><br>
+      <label for="userName">
+        Имя <br>
+        <input type="text" id="userName" class="userName" placeholder="Иван">
+      </label>
+      <br>
+      <label for="phone">
+        Телефон <br>
+        <input type="text" id="phone" class="phone" placeholder="+7 (000)000-0000">
+      </label>
+      <br>
+      <label for="email">
+        Эл. почта <br>
+        <input type="text" id="email" class="email" placeholder="your@mail.ru">
+      </label>
+      <br>
       <textarea name="post" id="post" cols="30" rows="10"></textarea><br>
       <button type="submit">Отправить</button>
     </form>
