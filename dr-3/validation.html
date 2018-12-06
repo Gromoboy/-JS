@@ -16,6 +16,7 @@
       </label>
       <br>
       <label for="phone">
+
         Телефон <br>
         <input type="text" id="phone" class="phone" placeholder="+7 (000)000-0000">
       </label>
@@ -25,13 +26,30 @@
         <input type="text" id="email" class="email" placeholder="your@mail.ru">
       </label>
       <br>
+      <label for="city">
+        Город <br>
+        <select name="city" id="city">
+
+        </select>
+      </label>
+      <br>
       <textarea name="post" id="post" cols="30" rows="10"></textarea><br>
       <button type="submit">Отправить</button>
     </form>
     <script src="validation.js"></script>
+    <script src="../dr-4/jquery-3.3.1.min.js"></script>
     <script>
       window.onload = () => {
         new FormValidator('.my-form');
+        $.ajax({
+          url: 'cities.json',
+          success: (cities) => {
+            const $el = $('#city');
+            $(cities).each( (idx, city) => {
+              $el.append(`<option>${city}</option>`);
+            })
+          }
+        })
       }
     </script>
   </div>
