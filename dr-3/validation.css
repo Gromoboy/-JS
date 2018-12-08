@@ -44,8 +44,7 @@ input:focus, select:focus {
     font-size: .5em;
     left: calc(var(--input-width) + 10px);
     width: var(--input-width);
-    padding: 8px;
-    padding-left: 20px;
+    padding: 8px 8px 8px 20px;
     border-top-left-radius: 50px ;
     border-bottom-left-radius: 50px;
 }

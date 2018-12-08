@@ -38,6 +38,7 @@
         <div class="autocomplete-items"></div>
       </div>
       <br>
+      <label for="post">Сообщение:</label><br>
       <textarea name="post" id="post" cols="30" rows="10"></textarea><br>
       <button type="submit">Отправить</button>
     </form>
@@ -56,7 +57,7 @@
               $el.append(`<option>${city}</option>`);
             })
           }
-        })
+        });
       //autocomlete city input
       $('#cityTyping').keyup(function() {
         const val = this.value;
@@ -66,16 +67,16 @@
           success: cities => {
             const $inp = $('#cityTyping');
             const regexp = new RegExp(val, 'i');
-            let $filteredCities = $(cities).filter( (idx, city) => {
-              return regexp.test(city);
+            let filteredCities = cities.filter( cityName => {
+              return regexp.test(cityName);
             });
-            if ($filteredCities.length) {
+            if (filteredCities.length) {
               let $choose = $('.autocomplete-items');
               $choose.show();
               $choose.html('');
-              $filteredCities.each(function (i, city) {
+              filteredCities.forEach(function (city) {
                $choose.append(`<div>${city}</div>`);
-              })
+              });
               $choose.click( function (e) {
                 $inp.val(e.target.innerText);
                 $choose.hide()

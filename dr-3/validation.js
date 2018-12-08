@@ -15,7 +15,7 @@
 class ValidatorTemplates {
   constructor() {
     this.userName = /^([a-z]+)|([йцукенгшщзхъфывапролджэячсмитьбю]+)$/i;
-    this.phone = /^\+\d\(\d{3}\)\d{3}\-\d{4}$/;
+    this.phone = /^\+\d \(\d{3}\)\d{3}-\d{4}$/;
     this.email = /^\w+@\w+\.(ru)|(com)$/;
   }
 }
@@ -32,7 +32,7 @@ class ErrorMessages {
 class FormValidator {
   constructor (formSelector, templates = new ValidatorTemplates(), errors = new ErrorMessages()) {
     if (!(this.formEl = document.querySelector(formSelector))) console.log("can't get form", this.formEl);
-    this.formEl.addEventListener('submit', evt => this.formSubmit(evt))
+    this.formEl.addEventListener('submit', evt => this.formSubmit(evt));
     this.templates = templates;
     this.errorMsgs = errors;
   }
@@ -63,7 +63,7 @@ class FormValidator {
     if (el.parentElement.getElementsByClassName('error-hint').length ) return;
 
     let errorEl = document.createElement('div');
-    errorEl.classList.add('error-hint')
+    errorEl.classList.add('error-hint');
     errorEl.innerHTML = this.errorMsgs[className];
     el.parentElement.appendChild(errorEl);
   }
