@@ -16,6 +16,7 @@
       </label>
       <br>
       <label for="phone">
+
         Телефон <br>
         <input type="text" id="phone" class="phone" placeholder="+7 (000)000-0000">
       </label>
@@ -25,13 +26,68 @@
         <input type="text" id="email" class="email" placeholder="your@mail.ru">
       </label>
       <br>
+      <label for="cityChoose">
+        Город <br>
+        <select name="city" id="cityChoose">
+
+        </select>
+      </label>
+      <br>
+      <div class="autocomplete">
+        <input type="text" id="cityTyping">
+        <!--<div class="autocomplete-items"></div>-->
+      </div>
+      <br>
+      <label for="post">Сообщение:</label><br>
       <textarea name="post" id="post" cols="30" rows="10"></textarea><br>
       <button type="submit">Отправить</button>
     </form>
     <script src="validation.js"></script>
+    <script src="../dr-4/jquery-3.3.1.min.js"></script>
     <script>
       window.onload = () => {
+        // Validate form
         new FormValidator('.my-form');
+        // load city selector
+        $.ajax({
+          url: 'cities.json',
+          success: (cities) => {
+            const $selectEl = $('#cityChoose');
+            cities.forEach(  city => {
+              $selectEl.append(`<option value="${city}">${city}</option>`);
+            })
+          }
+        });
+      //autocomlete city input
+      $('#cityTyping').keyup(function() {
+        const val = this.value;
+        if (val.length < 3) return;
+        $.ajax({
+          url: 'cities.json',
+          success: cities => {
+            const $inp = $('#cityTyping');
+            const regexp = new RegExp(val, 'i');
+            let filteredCities = cities.filter( cityName => {
+              return regexp.test(cityName);
+            });
+            if (filteredCities.length) {
+              // создаем div обертку для всплывающей подсказки содержащей список подходящих городов
+              let $choose = $('<div/>',{class:'autocomplete-items'});
+
+              filteredCities.forEach(function (city) {
+               $choose.append(`<div>${city}</div>`);
+              });
+              // вставляем подсказку в верстку
+              $choose.appendTo('.autocomplete');
+              $choose.click( function (e) {
+                $inp.val(e.target.innerText);
+                $choose.remove();
+              })
+            }
+          }
+        })
+        // console.log(this.value);
+      })
       }
     </script>
   </div>
