@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <!--<link rel="stylesheet" href="lec-tabs.css">-->
+  <title>Вкладки</title>
+</head>
+<body>
+  <div class="wrapper">
+    <ul class="tab-group">
+      <li><a href="#tab-content-1" class="tab active" >Tab 1</a></li>
+      <li><a href="#tab-content-2" class="tab">Tab 2</a></li>
+      <li><a href="#tab-content-3" class="tab">Tab 3</a></li>
+      <li><a href="#tab-content-4" class="tab">Tab 4</a></li>
+    </ul>
+    <div id="tab-content-1" class="tab-content active">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid cumque eaque enim est, et itaque odit quaerat similique tempore vel!</div>
+    <div id="tab-content-2" class="tab-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium architecto delectus earum ex maiores minima molestias quae quam recusandae, reprehenderit repudiandae veniam vitae. A delectus ducimus fugiat harum ipsa itaque minima modi, officiis pariatur porro quae qui quo sapiente sintj?</div>
+    <div id="tab-content-3" class="tab-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet aspernatur at consequatur deleniti dicta distinctio dolorum earum eius eligendi esse expedita facere fuga illum in inventore iste, itaque laborum magni natus necessitatibus nihil, numquam officiis placeat porro praesentium quod reiciendis repellat sit suscipit ut voluptatem voluptates voluptatibus! Dolorem, veniam!</div>
+    <div id="tab-content-4" class="tab-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut inventore natus nisi, odio possimus suscipit!</div>
+  </div>
+  <script src="jquery-3.3.1.min.js"></script>
+  <script>
+    $(function () {
+      $('.tab-group').on('click', '.tab:not(.active)', e => {
+        e.preventDefault();
+        const $clickedTab = $(e.target);
+        // unactive last active
+        $clickedTab.closest('.tab-group').find('.tab.active').removeClass('active');
+        $clickedTab.addClass('active')
+          .closest('.wrapper').find('.tab-content').hide();
+        // показать по ссылке
+        $( $clickedTab.attr('href') ).fadeIn(600);
+      });
+    })
+  </script>
+</body>
+</html>
