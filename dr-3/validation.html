@@ -35,7 +35,7 @@
       <br>
       <div class="autocomplete">
         <input type="text" id="cityTyping">
-        <div class="autocomplete-items"></div>
+        <!--<div class="autocomplete-items"></div>-->
       </div>
       <br>
       <label for="post">Сообщение:</label><br>
@@ -71,15 +71,17 @@
               return regexp.test(cityName);
             });
             if (filteredCities.length) {
-              let $choose = $('.autocomplete-items');
-              $choose.show();
-              $choose.html('');
+              // создаем div обертку для всплывающей подсказки содержащей список подходящих городов
+              let $choose = $('<div/>',{class:'autocomplete-items'});
+
               filteredCities.forEach(function (city) {
                $choose.append(`<div>${city}</div>`);
               });
+              // вставляем подсказку в верстку
+              $choose.appendTo('.autocomplete');
               $choose.click( function (e) {
                 $inp.val(e.target.innerText);
-                $choose.hide()
+                $choose.remove();
               })
             }
           }
