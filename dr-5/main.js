@@ -8,7 +8,11 @@ jQuery(function ($) {
   let cart = new Cart('getCart.json');
   // Добавление товара
   $('.buyBtn').click(e => {
-    cart.addProduct((e.target));
-  })
+    cart.addProduct(e.target);
+  });
+  // Удаление товара
+  $('.close').click(e => {
+    console.log(e.target, '11111');
+  });
 
 });

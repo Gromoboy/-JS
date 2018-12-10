@@ -43,7 +43,13 @@ class Cart {
     $container.append($(`<p class="product-name">${product.product_name}</p>`));
     $container.append($(`<p class="product-quantity">${product.quantity}</p>`));
     $container.append($(`<p class="product-price">${product.price} руб.</p>`));
+    $container.append($('<p class="close">&times;</p>'));
     $container.appendTo($('.cart-item-group'));
+    // TODO: add to container 'close' event
+    $container.find('.close').click(e => {
+      this._removeItem(product.id_product);
+    });
+
   }
   _updateTotalView() {
     $('.sum-goods').text(`${this.countGoods} шт.`);
@@ -56,7 +62,7 @@ class Cart {
   }
   addProduct(prodBoxBtnEl) {
     let $buyingProdEl = $(prodBoxBtnEl);
-    let sameProductInCart = this.cartItems.find(cartProduct => cartProduct.id_product === +$buyingProdEl.data('id'));
+    let sameProductInCart = this.cartItems.find(item => item.id_product === +$buyingProdEl.data('id'));
     if (sameProductInCart) {
       sameProductInCart.quantity++;
       this.countGoods++;
@@ -76,4 +82,18 @@ class Cart {
     }
     this._updateTotalView();
   }
+  _removeItem(productId) {
+    const lookingProduct = this.cartItems.find(item => item.id_product === +productId);
+    if (!lookingProduct) return;
+    if (lookingProduct.quantity > 1 ) {
+      lookingProduct.quantity--;
+      this.countGoods--;
+      this.amount -= lookingProduct.price;
+      this._updateCartItemView(lookingProduct);
+    } else {
+
+    }
+    this._updateTotalView();
+  }
+
 }

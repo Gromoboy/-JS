@@ -26,11 +26,15 @@ p {
 .cart-item {
   display: grid;
   grid-template-row: 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
-  padding: 10px 0; }
+  grid-template-columns: 3fr 1fr 2fr 1fr;
+  position: relative;
+  padding: 10px 10px; }
 
 .cart-item:not(:first-child) {
   border-top: 1px solid gray; }
+
+.cart-item:hover {
+  background-color: #eee; }
 
 .cart-item-group {
   margin: 20px 0; }
@@ -44,5 +48,17 @@ p {
 
 .product-quantity {
   text-align: center; }
+
+.close {
+  cursor: pointer;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  right: 0%;
+  padding: 13px;
+  transform: translate(0%, -50%); }
+
+.close:hover {
+  background: #bbbbbb; }
 
 /*# sourceMappingURL=style.css.map */
