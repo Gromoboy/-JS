@@ -46,7 +46,7 @@ class Cart {
     $container.append($('<p class="close">&times;</p>'));
     $container.appendTo($('.cart-item-group'));
     // TODO: add to container 'close' event
-    $container.find('.close').click(e => {
+    $container.find('.close').click( () => {
       this._removeItem(product.id_product);
     });
 
@@ -85,14 +85,19 @@ class Cart {
   _removeItem(productId) {
     const lookingProduct = this.cartItems.find(item => item.id_product === +productId);
     if (!lookingProduct) return;
-    if (lookingProduct.quantity > 1 ) {
-      lookingProduct.quantity--;
-      this.countGoods--;
-      this.amount -= lookingProduct.price;
-      this._updateCartItemView(lookingProduct);
-    } else {
+
+    lookingProduct.quantity--;
+    this.countGoods--;
+    this.amount -= lookingProduct.price;
+    this._updateCartItemView(lookingProduct);
+
+    if (lookingProduct.quantity < 1) {
+      const idx = this.cartItems.indexOf(lookingProduct);
+      this.cartItems.splice(idx, 1);
+      $(`div[data-product = "${productId}"]`).remove();
 
     }
+
     this._updateTotalView();
   }
 
