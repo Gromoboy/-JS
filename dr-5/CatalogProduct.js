@@ -1,14 +1,16 @@
-class Product {
-  constructor(id, title, price, img = 'https://placehold.it/200x150', containerSelector = '.product-group') {
+class CatalogProduct {
+  constructor(id, title, price,
+              img = 'https://placehold.it/200x150',
+              containerSelector = '.product-group') {
     this.id = id;
     this.title = title;
     this.price = price;
     this.img = img;
-    this.cS = containerSelector;
+    this.catalogSelector = containerSelector;
     this._render();
   }
   _render() {
-    let $wrapper = $('<div/>', {class: 'product'}),
+    let $productBox = $('<div/>', {class: 'product'}),
       $img   = $('<img/>', {
         src: this.img,
         alt: 'img-alt'
@@ -24,11 +26,13 @@ class Product {
         'data-name': this.title
       });
     // создание структуры
-    $img.appendTo($wrapper);
+    $img.appendTo($productBox);
+
     $name.appendTo($desc);
     $price.appendTo($desc);
     $buyBtn.appendTo($desc);
-    $desc.appendTo($wrapper);
-    $(this.cS).append($wrapper);
+    $desc.appendTo($productBox);
+
+    $(this.catalogSelector).append($productBox);
   }
 }
