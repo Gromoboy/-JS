@@ -27,8 +27,8 @@ class Post {
       `
       <div class="feedback ${post.isApproved ? 'approved' : 'disapproved'}" id="${post.id}">
         <div class="title">${post.autor}
-        <span class="btn-approve">${post.isApproved ? '' : 'Одобрить'}</span>
-        <span class="btn-close">&times;</span> 
+          <span class="btn-approve">${post.isApproved ? '' : 'Одобрить'}</span>
+          <span class="btn-close">&times;</span> 
         </div>
         <div class="message">${post.text}</div>
       </div>
@@ -48,10 +48,20 @@ class Post {
     })
   }
 
+ add(formSelector) {
+    let $form = $(formSelector);
+    let post = {
+      id: this.posts.length,
+      autor: $form.find('#autor').value,
+      text: $form.find('#post').value,
+      isApproved: false
+    };
 
+    this._renderPost(post);
+ }
 }
 
 const feedbacks = new Post('feedback.json');
-$('submit').onclick( () => {
-  feedbacks.add('form');
+$('#send-feedback').click( (e) => {
+  feedbacks.add('#post-feedback');
 });
