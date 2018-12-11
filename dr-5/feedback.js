@@ -52,8 +52,8 @@ class Post {
     let $form = $(formSelector);
     let post = {
       id: this.posts.length,
-      autor: $form.find('#autor').value,
-      text: $form.find('#post').value,
+      autor: $form.find('#autor').val(),
+      text: $form.find('#post').val(),
       isApproved: false
     };
 
