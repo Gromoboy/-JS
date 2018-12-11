@@ -51,12 +51,12 @@ class Post {
  add(formSelector) {
     let $form = $(formSelector);
     let post = {
-      id: this.posts.length,
+      id: this.posts.length+1,
       autor: $form.find('#autor').val(),
       text: $form.find('#post').val(),
       isApproved: false
     };
-
+    this.posts.push(post);
     this._renderPost(post);
  }
 }
