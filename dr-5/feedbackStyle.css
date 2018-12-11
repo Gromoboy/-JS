@@ -1,0 +1,24 @@
+.disapproved {
+    color: #bbbbbb;
+}
+
+.btn-close:hover, .btn-approve:hover {
+    background: #bbb;
+    cursor: pointer;
+    color: whitesmoke;
+}
+
+.title {
+    width: 300px;
+    display: grid;
+    grid-template-columns: 5fr 2fr 1fr;
+}
+
+.btn-approve, .btn-close {
+    text-align: center;
+    padding: .5em;
+}
+
+.feedback{
+    margin: 20px 10px;
+}

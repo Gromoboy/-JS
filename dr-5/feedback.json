@@ -1,0 +1,7 @@
+[
+  {"id": 1, "autor": "Ann", "text": "some text", "isApproved": false},
+  {"id": 2, "autor": "Ann", "text": "some text", "isApproved": true},
+  {"id": 3, "autor": "Ann", "text": "some text", "isApproved": false},
+  {"id": 4, "autor": "Ann", "text": "some text", "isApproved": true},
+  {"id": 5, "autor": "Ann", "text": "some text", "isApproved": false}
+]
