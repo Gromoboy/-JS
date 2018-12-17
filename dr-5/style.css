@@ -1,53 +1,79 @@
 main {
   width: 1000px;
-  margin: 0 auto; }
+  margin: 0 auto;
+}
 
 .product-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-evenly; }
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
 
 .product {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 200px;
   border-radius: 5px;
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 .desc {
   padding: 15px;
-  border: 1px solid #c0c0c040; }
+  border: 1px solid #c0c0c040;
+}
 
 p {
-  margin: 0 0 5px 0; }
+  margin: 0 0 5px 0;
+}
 
 #cart {
-  max-width: 300px; }
+  max-width: 300px;
+}
 
 .cart-item {
+  display: -ms-grid;
   display: grid;
   grid-template-row: 1fr;
-  grid-template-columns: 3fr 1fr 2fr 1fr;
+  -ms-grid-columns: 3fr 1fr 2fr 1fr;
+      grid-template-columns: 3fr 1fr 2fr 1fr;
   position: relative;
-  padding: 10px 10px; }
+  padding: 10px 10px;
+}
 
 .cart-item:not(:first-child) {
-  border-top: 1px solid gray; }
+  border-top: 1px solid gray;
+}
 
 .cart-item:hover {
-  background-color: #eee; }
+  background-color: #eee;
+}
 
 .cart-item-group {
-  margin: 20px 0; }
+  margin: 20px 0;
+}
 
 .cart-summary, .product-price {
-  text-align: right; }
+  text-align: right;
+}
 
 .cart-summary {
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: 2fr 1fr; }
+  -ms-grid-columns: 2fr 1fr;
+      grid-template-columns: 2fr 1fr;
+}
 
 .product-quantity {
-  text-align: center; }
+  text-align: center;
+}
 
 .close {
   cursor: pointer;
@@ -56,9 +82,11 @@ p {
   top: 50%;
   right: 0%;
   padding: 13px;
-  transform: translate(0%, -50%); }
+  -webkit-transform: translate(0%, -50%);
+          transform: translate(0%, -50%);
+}
 
 .close:hover {
-  background: #bbbbbb; }
-
+  background: #bbbbbb;
+}
 /*# sourceMappingURL=style.css.map */
